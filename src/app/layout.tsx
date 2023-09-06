@@ -1,6 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+// import { PrimeReactProvider } from 'primereact/context';
+import "primereact/resources/themes/lara-light-indigo/theme.css";     
+import "primereact/resources/primereact.min.css";   
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +27,9 @@ export default function RootLayout({
       <body className={inter.className}>
         {/* <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}> */}
-            {children}
+             {/* <PrimeReactProvider> */}
+              {children}
+            {/* </PrimeReactProvider> */}
           {/* </PersistGate>
         </Provider> */}
         <Toaster

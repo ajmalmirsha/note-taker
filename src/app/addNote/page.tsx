@@ -28,7 +28,6 @@ export default function AddNote({_id}:any) {
     try {
       if (!title) {
         alert('Please enter title');
-        // toast.error('Please')
       return false
       }
 
@@ -94,9 +93,12 @@ export default function AddNote({_id}:any) {
               role="switch"
               value={autoSave}
               disabled={!title || !category?.value ? true : false}
-              onChange={(e) => {
+              onChange={async(e) => {
                 if (e.target.checked) {
-                  handleSave(e);
+                 const res = await handleSave(e);
+                if(res){
+                  e.target.checked = true
+                }
                 }
                 setAutoSave(e.target.checked);
               }}

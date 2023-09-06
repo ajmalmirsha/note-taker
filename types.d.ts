@@ -11,6 +11,18 @@ type optionType = {
     value: string
 }
 
+type ListPropsType = {
+    data:any,
+    setData:any
+}
+
+interface PaginationProps {
+     onPageChange: () => void;
+      first: number;
+      rows: number;
+      count: number;
+}
+
 interface NoteState {
     id: string;
     title: string;

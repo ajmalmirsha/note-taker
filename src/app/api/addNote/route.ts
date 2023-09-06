@@ -10,17 +10,21 @@ export const POST = async (req:any)=> {
         let res
         if(category?.__isNew__){
             const {label,value} = category
-            cata = await categorySchema.create({label,value})
+            cata = await categorySchema.findOneAndUpdate({value:value},{$set:{label,value}},{upsert:true,new:true})
             console.log(333,cata);
             
             res = await noteSchema.findOneAndUpdate({title},{$set:{title,content,category : cata?._id}},{upsert:true,new:true})           
             console.log(4353,res);
+            return NextResponse.json({message:'saved',_id:res._id},{status:200})
         }else {
-            res = await noteSchema.findOneAndUpdate({title},{$set:{title,content,category: category.value}})
+            console.log('exisiteing cata',category);
+            
+            res = await noteSchema.findOneAndUpdate({title},{$set:{title,content,category: category.value}},{upsert:true,new:true})
+            console.log(res);
+            
+            return NextResponse.json({message:'saved',_id:res._id},{status:200})
         }
-        console.log(res,6666);
         
-        return NextResponse.json({message:'saved',_id:res._id},{status:200})
     } catch (error) {
         console.log(error);
     } 
