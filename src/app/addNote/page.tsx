@@ -75,8 +75,10 @@ export default function AddNote({_id}:any) {
     }
   }, [content,title,docId,category?.value]);
 
-  const handleChange = (option: optionType) => {
-    setCategory(option);
+  const handleChange = (option: optionType | null) => {
+    if(option !== null){
+      setCategory(option);
+    }
     return;
   };
   return (
