@@ -90,7 +90,7 @@ export default function List () {
       <>
        <div className="flex justify-between p-5">
         <div className="">
-        <CategorySelect  handleChange={handleSelect} />
+        <CategorySelect value={category} handleChange={handleSelect} />
         </div>
       <Search handleChange={handleChange}  handleSearch={handleSearch} />
       </div>
