@@ -4,6 +4,7 @@ import { noteApi } from "@/utils/apis";
 import { useEffect, useLayoutEffect, useState } from "react";
 import Select from "../components/Items";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast/headless";
 
 export default function AddNote({_id}:any) {
   const [title, setTitle] = useState("");
@@ -14,8 +15,6 @@ export default function AddNote({_id}:any) {
   const router = useRouter()
   useLayoutEffect(()=>{
     if(_id){
-      console.log('gone');
-      
       noteApi.get('/api/getNotes/'+_id).then(({data:{data}})=>{
           setContent(data.content)
           setTitle(data.title)
@@ -24,16 +23,18 @@ export default function AddNote({_id}:any) {
       })
     }
   },[])
-  const handleSave = async () => {
+  const handleSave = async (e:any) => {
+    e.preventDefault()
     try {
       if (!title) {
         alert('Please enter title');
-      return
+        // toast.error('Please')
+      return false
       }
 
       if (!category?.value) {
         alert('Please select category')
-        return
+        return false
       }
 
       const config: configType = {
@@ -47,9 +48,10 @@ export default function AddNote({_id}:any) {
       const { data } = await noteApi.post("/api/addNote", obj, config);
 
       setDocId(data._id);
-
+      return true
     } catch (err) {
       console.log(err);
+      return false
     }
   };
 
@@ -94,7 +96,7 @@ export default function AddNote({_id}:any) {
               disabled={!title || !category?.value ? true : false}
               onChange={(e) => {
                 if (e.target.checked) {
-                  handleSave();
+                  handleSave(e);
                 }
                 setAutoSave(e.target.checked);
               }}
@@ -108,9 +110,11 @@ export default function AddNote({_id}:any) {
             </label>
           </div>
           <button
-            onClick={()=>{
-              handleSave()
-              router.push('/')
+            onClick={async(e)=>{
+             const res:boolean = await handleSave(e)
+             if(res){
+               router.push('/')
+             }
             }}
             type="button"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
