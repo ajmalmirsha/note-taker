@@ -23,6 +23,7 @@ interface PaginationProps {
       count: number;
 }
 
+
 interface NoteState {
     id: string;
     title: string;

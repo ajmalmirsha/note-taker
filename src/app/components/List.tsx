@@ -39,18 +39,19 @@ export default function List () {
     }
     },[search])
 
-        const onPageChange = (event: PaginatorPageChangeEvent) => {
-            setFirst(event.first);
-            setRows(event.rows);
-            console.log('first', event.first);
-            console.log('rows', event.rows);
-            setLoading(true)
-            noteApi.get('/api/getNotes/page/' + event.first).then(({data:{data}})=>{
-              setLoading(false)
-                setData(data)
-                console.log(data);        
-            })
-        };
+    const onPageChange = (event: PaginatorPageChangeEvent) => {
+      setFirst(event.first);
+      setRows(event.rows);
+      console.log('first', event.first);
+      console.log('rows', event.rows);
+      setLoading(true);
+      noteApi.get('/api/getNotes/page/' + event.first).then(({ data: { data } }) => {
+        setLoading(false);
+        setData(data);
+        console.log(data);
+      });
+    };
+    
 
         const handleChange = (e:any) => {
           try {
