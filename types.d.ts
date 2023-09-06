@@ -11,6 +11,13 @@ type optionType = {
     value: string
 }
 
+interface NoteState {
+    id: string;
+    title: string;
+    content: string;
+    category: string;
+  }
+
 type cardsType = {
     title:String,
     content:String,
