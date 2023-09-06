@@ -17,3 +17,4 @@ export default function Select ({handleChange,value}:SelectProps) {
         <CreatableSelect value={value} onChange={handleChange} className='w-64' isClearable options={options} />
     )
 }
+

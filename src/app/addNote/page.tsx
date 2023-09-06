@@ -22,7 +22,7 @@ export default function AddNote({_id}:any) {
           setCategory({label:data.category.label,value:data.category._id})
       })
     }
-  },[])
+  },[_id])
   const handleSave = async (e:any) => {
     e.preventDefault()
     try {
