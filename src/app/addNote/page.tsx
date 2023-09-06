@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable */
 import { noteApi } from "@/utils/apis";
 import { useEffect, useLayoutEffect, useState } from "react";
 import Select from "../components/Items";

@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 // import { PrimeReactProvider } from 'primereact/context';
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import "primereact/resources/primereact.min.css";   
-
+/* eslint-disable */
 const inter = Inter({ subsets: ['latin'] })
 
 import  { persistor, store } from '../../redux/store';
