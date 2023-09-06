@@ -17,7 +17,7 @@ type ListPropsType = {
 }
 
 interface PaginationProps {
-     onPageChange: () => void;
+     onPageChange: (event: PaginationEvent) => void | null;
       first: number;
       rows: number;
       count: number;
@@ -39,6 +39,11 @@ type cardsType = {
         value:string
     },
     _id:String,
+}
+
+type PaginationEvent = {
+    first : number,
+    rows:number  ,
 }
 
 type configType = {

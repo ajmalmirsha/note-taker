@@ -16,7 +16,7 @@ export default function List () {
   const [DocCount,setDocCount] = useState(0)
   const [search,setSearch] = useState('')
   const [data,setData] = useState([])
-  const [category,setCategory] = useState(null)
+  const [category,setCategory] = useState({label:'',value:''})
   /* eslint-disable */
   useEffect(()=>{
     if(!search && !category?.value){
@@ -111,7 +111,18 @@ export default function List () {
             })}
         </div>
         <div className="flex justify-center">
-            <Pagination onPageChange={onPageChange} count={DocCount} first={first} rows={rows}  />
+            <Pagination onPageChange={(event:PaginationEvent)=> {
+               setFirst(event.first);
+               setRows(event.rows);
+               setLoading(true);
+               noteApi.get('/api/getNotes/page/' + event.first).then(({ data: { data } }) => {
+                 setLoading(false);
+                 setData(data);
+               });
+               return
+               } 
+              } 
+              count={DocCount} first={first} rows={rows}  />
         </div>
         </>
       )

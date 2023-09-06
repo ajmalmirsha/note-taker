@@ -1,6 +1,6 @@
 
 
-export default function Search ({handleSearch,handleChange}) {
+export default function Search ({handleSearch,handleChange}:{handleSearch:any,handleChange:any}) {
     return(
         <div className="mb-3 w-[250px]">
         <form onSubmit={handleSearch} >
