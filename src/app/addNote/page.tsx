@@ -55,8 +55,6 @@ export default function AddNote({_id}:any) {
   };
 
   useEffect(() => {
-    console.log("titile", title, "docId", docId, "category", category);
-
     if (title && docId && category?.value) {
       let timeOut: any;
       clearTimeout(timeOut);
@@ -75,7 +73,7 @@ export default function AddNote({_id}:any) {
         clearTimeout(timeOut);
       };
     }
-  }, [content]);
+  }, [content,title,docId,category?.value]);
 
   const handleChange = (option: optionType) => {
     setCategory(option);
