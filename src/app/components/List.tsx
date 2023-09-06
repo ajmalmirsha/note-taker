@@ -17,6 +17,7 @@ export default function List () {
   const [search,setSearch] = useState('')
   const [data,setData] = useState([])
   const [category,setCategory] = useState(null)
+  /* eslint-disable */
   useEffect(()=>{
     if(!search && !category?.value){
       setLoading(true)
@@ -96,15 +97,15 @@ export default function List () {
       {
         loading ? 
         <div className="flex justify-center items-center h-[80vh]">
-        <Image src={dataLoader} /> 
+        <Image alt="loading" src={dataLoader} /> 
         </div>
        : (
         <>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 gap-3 p-7">
           {data.length > 0 &&
-            data.map((x: any) => {
+            data.map((x: any,i) => {
               return (
-                <Cards title={x.title} content={x.content} category={x.category} _id={x._id} />
+                <Cards key={i} title={x.title} content={x.content} category={x.category} _id={x._id} />
               );
             })}
         </div>

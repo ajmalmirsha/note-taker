@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator';
+import { Paginator } from 'primereact/paginator';
 
 
 export default function Pagination ({onPageChange,first,rows,count}:PaginationProps) {
