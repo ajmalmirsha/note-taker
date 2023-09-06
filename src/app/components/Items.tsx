@@ -5,7 +5,7 @@ import { useLayoutEffect, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 // let options:optionType[] = [];
 
-export default function Select ({handleChange,value}:SelectProps) {
+export default function Select ({handleChange}:SelectProps) {
     const [options,setOptions] = useState([])
     useLayoutEffect(()=>{
         noteApi.get('/api/categories').then(({data:{options}})=>{
@@ -14,7 +14,7 @@ export default function Select ({handleChange,value}:SelectProps) {
         })
     },[])
     return (
-        <CreatableSelect value={value} onChange={handleChange} className='w-64' isClearable options={options} />
+        <CreatableSelect onChange={handleChange} className='w-64' isClearable options={options} />
     )
 }
 
