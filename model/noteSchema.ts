@@ -7,9 +7,8 @@ import mongoose, {Schema,model} from "mongoose";
         type : Schema.Types.ObjectId ,
         ref:'Category'
     }
-},{timestamps:true, collection: 'categories'})
+},{timestamps:true})
 
-console.log(mongoose.models);
+const noteModel = mongoose.models.notes || model('notes',noteSchema)
 
- const NoteSchema = mongoose.models.notes || model('notes',noteSchema)
-export default  NoteSchema
+export default noteModel

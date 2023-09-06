@@ -1,17 +1,17 @@
 import connectMongoDB from "@/libs/mongoDB";
-import NoteSchema from "../../../../model/noteSchema";
 import { NextResponse } from "next/server";
+import noteSchema from "../../../../model/noteSchema";
 
 
-export const GET = async (req:any) => {
+export const GET = async (req: any) => {
     try {
         await connectMongoDB()
-        const data = await NoteSchema.find({}).populate({ path: 'category', model: 'Category', options: { strictPopulate: false } });
+        const data = await noteSchema.find({}).populate({ path: 'category', model: 'Category', options: { strictPopulate: false }})
 
-        console.log('data',data);
-        
-        return NextResponse.json({data},{status:200})
+        console.log('data', data);
+
+        return NextResponse.json({ data }, { status: 200 })
     } catch (error) {
-        console.log(error);   
+        console.log(error);
     }
 }

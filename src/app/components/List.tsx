@@ -11,6 +11,8 @@ export default function List () {
       
       noteApi.get('/api/getNotes').then(({data:{data}})=>{
           setData(data)
+          console.log('data feteched');
+          console.log(data);          
       })
     },[])
     return (

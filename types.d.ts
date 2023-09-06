@@ -1,5 +1,9 @@
 interface SelectProps {
-    handleChange: (selectedOption: optionType | null) => void;
+    handleChange: (selectedOption: optionType | null) => void,
+    value: {
+        label: string,
+        value: string
+    }
 }
 
 type optionType = {

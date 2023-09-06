@@ -9,4 +9,6 @@ const categorySchema = new Schema({
 console.log("modelsss",mongoose.models);
 
 
-export default mongoose.models?.Category || model('Category',categorySchema)
+const CategoryModel = mongoose.models?.Category || model('Category',categorySchema)
+
+export default CategoryModel

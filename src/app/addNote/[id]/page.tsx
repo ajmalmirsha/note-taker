@@ -1,9 +1,11 @@
 'use client'
-import { useParams } from "next/navigation";
+// import { useRouter } from "next/router";
+// import { useParams } from "next/";
 import AddNote from "../page";
+import { useParams } from "next/navigation";
 
 export default function EditNote () {
-    const {id} = useParams()
+    const {id} = useParams();
     console.log('aparams',id);
     
     return (

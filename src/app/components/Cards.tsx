@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation"
 
 export default function Cards ({title,content,category,_id}:cardsType) {
   const router = useRouter()
+ console.log(title,content,category,_id);
  
   const handleClick = () => {
     router.push('/addNote/' + _id)
