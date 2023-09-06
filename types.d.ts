@@ -1,5 +1,5 @@
 interface SelectProps {
-    handleChange: (selectedOption: optionType ) => void,
+    handleChange: (selectedOption: optionType | null ) => void,
     value: {
         label: string,
         value: string
