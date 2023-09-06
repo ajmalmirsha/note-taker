@@ -34,7 +34,10 @@ interface NoteState {
 type cardsType = {
     title:String,
     content:String,
-    category:String,
+    category:{
+        label: string,
+        value:string
+    },
     _id:String,
 }
 
