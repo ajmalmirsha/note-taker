@@ -8,6 +8,8 @@ export const POST = async (req:any)=> {
         const { title, content, category } = await req.json()        
         let cata:cataType
         let res
+
+        
         if(category?.__isNew__){
             const {label,value} = category
             cata = await categorySchema.findOneAndUpdate({value:value},{$set:{label,value}},{upsert:true,new:true})
